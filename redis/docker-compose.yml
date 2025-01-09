@@ -1,0 +1,14 @@
+version: "3.4"
+
+services:
+  redis:
+    image: redis
+    restart: ${RESTART}
+    ports:
+      - ${PORT}:6379
+    volumes: 
+      - redis-data:/data
+    command: redis-server --appendonly yes --requirepass ${PASSWORD}
+
+volumes:
+  redis-data:
